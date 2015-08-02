@@ -10,7 +10,7 @@ def _shift_c(c, distance):
     return chr((((ord(c) - 65) + distance) % 26) + 65)
 
 
-_, shifts = crack(FOUND2, 6)
+_, shifts, score = crack(FOUND2, 6)
 
 password = ''.join([_shift_c(t, shifts[i % len(shifts)]) for i, t in enumerate(CIPHER_TEXT.replace(' ', ''))])
 print password

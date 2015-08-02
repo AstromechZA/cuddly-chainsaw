@@ -19,6 +19,7 @@ def crack(text, key_length):
 
     best_shifts = []
     best_texts = []
+    best_scores = 0
 
     for sub_text in sub_texts:
 
@@ -38,10 +39,11 @@ def crack(text, key_length):
 
         best_shifts.append(best_shift)
         best_texts.append(best_text)
+        best_scores += best_score
 
     real_best_text = ""
     for i in xrange(0, text_length):
         real_best_text += best_texts[i % key_length][i / key_length]
 
-    return real_best_text, best_shifts
+    return real_best_text, best_shifts, best_scores
 
